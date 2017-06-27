@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"flag"
 	"web-go/message"
+	"web-go/gateway"
 )
 
 var (
@@ -18,7 +19,8 @@ func main() {
 	}
 	router := []Router{
 		Router{"GET", "/", IndexHandler},
-		Router{"POST", "/message", message.MessageHandler},
+		Router{"POST", "/api/v1", gateway.Handler},
+		Router{"POST", "/message", message.Handler},
 	}
 
 	mux := NewMux(router)
