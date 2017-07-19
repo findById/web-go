@@ -31,3 +31,7 @@ func main() {
 	mux := NewMux(router)
 	http.ListenAndServe(Config.Host+":"+Config.Port, mux)
 }
+
+func IndexHandler(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("Hello, 世界!"))
+}
