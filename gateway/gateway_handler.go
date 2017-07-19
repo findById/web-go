@@ -6,12 +6,10 @@ import (
 	"errors"
 	"net/http"
 	"strings"
-
-	"github.com/findById/web-go/api"
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
-	result := api.Response{}
+	result := Response{}
 
 	body := new(Request)
 	err := json.NewDecoder(r.Body).Decode(body)
