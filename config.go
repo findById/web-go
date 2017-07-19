@@ -12,11 +12,11 @@ const (
 )
 
 var (
-	Config    ConfigBean
+	Env       Config
 	GoVersion = runtime.Version()
 )
 
-type ConfigBean struct {
+type Config struct {
 	Host string `json:"host"`
 	Port string `json:"port"`
 }

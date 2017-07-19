@@ -13,7 +13,7 @@ var (
 )
 
 func init() {
-	parseConfig("config.json", &Config)
+	parseConfig("config.json", &Env)
 }
 
 func main() {
@@ -29,7 +29,7 @@ func main() {
 	}
 
 	mux := NewMux(router)
-	http.ListenAndServe(Config.Host+":"+Config.Port, mux)
+	http.ListenAndServe(Env.Host+":"+Env.Port, mux)
 }
 
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
