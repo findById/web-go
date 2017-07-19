@@ -1,15 +1,20 @@
 package main
 
 import (
-	"net/http"
 	"flag"
-	"web-go/message"
-	"web-go/gateway"
+	"net/http"
+
+	"github.com/findById/web-go/api"
+	"github.com/findById/web-go/gateway"
 )
 
 var (
 	port = flag.String("port", "8080", "accept port")
 )
+
+func init() {
+	parseConfig("config.json", &Config)
+}
 
 func main() {
 	flag.Parse()
@@ -20,9 +25,9 @@ func main() {
 	router := []Router{
 		Router{"GET", "/", IndexHandler},
 		Router{"POST", "/api/v1", gateway.Handler},
-		Router{"POST", "/message", message.Handler},
+		Router{"POST", "/api/message", api.MessageHandler},
 	}
 
 	mux := NewMux(router)
-	http.ListenAndServe(":" + *port, mux)
+	http.ListenAndServe(Config.Host+":"+Config.Port, mux)
 }

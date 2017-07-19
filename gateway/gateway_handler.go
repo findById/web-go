@@ -1,16 +1,17 @@
 package gateway
 
 import (
-	"web-go/common"
-	"encoding/json"
-	"net/http"
 	"bytes"
-	"strings"
+	"encoding/json"
 	"errors"
+	"net/http"
+	"strings"
+
+	"github.com/findById/web-go/api"
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
-	result := common.Response{}
+	result := api.Response{}
 
 	body := new(Request)
 	err := json.NewDecoder(r.Body).Decode(body)

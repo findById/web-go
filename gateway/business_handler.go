@@ -2,9 +2,9 @@ package gateway
 
 import (
 	"bytes"
-	"net/http"
-	"io/ioutil"
 	"errors"
+	"io/ioutil"
+	"net/http"
 )
 
 func Post(url string, data []byte) ([]byte, error) {
